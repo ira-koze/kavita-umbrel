@@ -1,14 +1,17 @@
-version: "3.7"
-
-services:
-
-  app_proxy:
-    environment:
-      # The format here is: <app-id>_<docker-service-name>_1
-      APP_HOST: sparkles-hello-world_server_1
-      APP_PORT: 3000
-    
-  server:
-    image: getumbrel/community-app-store-hello-world:latest
-    user: "1000:1000"
-    init: true
+id: myapps-kavita
+name: Kavita
+version: 1.0.0
+description: A fast, feature-rich, cross-platform reading server for comics, manga, and books.
+developer: Kareadita
+website: https://www.kavitareader.com/
+repo: https://github.com/Kareadita/Kavita
+icon: https://www.kavitareader.com/favicon.ico
+port: 5000
+docker:
+  image: ghcr.io/kareadita/kavita:latest
+  restart: unless-stopped
+  volumes:
+    - data:/kavita/config
+    - library:/manga
+  environment:
+    - TZ=Etc/UTC
