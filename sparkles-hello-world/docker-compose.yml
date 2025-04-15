@@ -13,5 +13,7 @@ docker:
   volumes:
     - data:/kavita/config
     - library:/manga
+    - library:/book
+    - library:/comic
   environment:
     - TZ=Etc/UTC
